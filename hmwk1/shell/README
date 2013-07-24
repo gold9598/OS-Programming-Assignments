@@ -1,0 +1,42 @@
+Homework 1
+Programming Assignment: shell program
+
+
+Execution steps:
+	make w4118_sh
+	./w4118_sh
+
+
+When the the program starts up a prompt ("$ ") will be displayed and wait for user input.
+My shell includes a number of built in commands (described in builtin.h/c). These include:
+	exit: exits the program
+
+	cd <path name>: change directory to path name. The path name can be provided as an absolute or relative path.
+
+	path: will print out all the paths in the path variable. 
+	path + <path name>: will add a path to the path list.
+	path - <path name>: will remove a path from the path list. The provided <path name> must be syntactically identical to the path saved in the list, i.e: /bin and /bin/ are NOT the same.
+
+	history: will print out a list of (at most) the past 100 commands, including any "history" commands.
+	!n: will execute the nth command in the history list.
+
+
+In addition to built in commands, the shell will attempt to execute any file names provided. If no path is specified at the prompt, the shell will search its path list for the file. If the file is found, the shell will fork() and execute the file in a seperate process.
+The shell will not check the current directory by default. To execute a file from the current directory, either add the directory to the path list, or specify by ./<file name>. 
+
+
+The shell will attempt to handle all errors gracefully. Most errors will print out a warning, and the next prompt will be shown. Exceptions include: malloc/realloc errors, and fork() errors.
+
+
+All built in functions are defined in builtin.c and builtin.h
+A linked list is implemented in list.c and list.h
+Both the path and history are stored in a linked list.
+
+
+Please see testRun.txt for a test run of the program.
+
+
+References:
+I refered to an assignment from cs3157 while implementing my linked list.
+
+
